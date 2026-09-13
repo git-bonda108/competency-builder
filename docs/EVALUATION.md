@@ -8,7 +8,7 @@ The only quantitative signals the app itself emits are per-generation **latency*
 
 ## Edge cases the code visibly handles
 
-Enumerated from `competancy-matrix.py`:
+Enumerated from `app.py`:
 
 - **Provider failure fallback.** Each LLM call (both agents, both providers) is wrapped in its own try/except; a failing provider surfaces as `st.error` and the other provider's output is used. If both fail, the agent returns a stub (`"No learning path generated."` / `"No review generated."`).
 - **Weak-critique guard.** The critic's output replaces the draft only if its length is ≥ 80% of the draft's, protecting against the reviewer returning a short critique instead of a full revision.

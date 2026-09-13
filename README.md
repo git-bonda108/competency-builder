@@ -1,4 +1,4 @@
-# Competency Builder
+# Learning Path Generator
 
 A Streamlit application that generates a three-level (Beginner / Intermediate / Advanced) learning path for a chosen business function, competency, and role, then attaches curated web and video references for each level.
 
@@ -28,8 +28,8 @@ flowchart LR
 ## Quickstart
 
 ```bash
-git clone https://github.com/git-bonda108/competency-builder.git
-cd competency-builder
+git clone https://github.com/git-bonda108/learning-path-generator.git
+cd learning-path-generator
 
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -37,7 +37,7 @@ pip install openpyxl   # needed for Excel upload; not listed in requirements.txt
 
 cp .env.example .env   # then fill in the four API keys
 
-streamlit run competancy-matrix.py
+streamlit run app.py
 ```
 
 Expected output: Streamlit prints `Local URL: http://localhost:8501`; the page shows the Function/Competency/Role selectors. Click **Generate Learning Path** and, after the spinner completes (two LLM calls plus six search calls, sequential), the left pane shows the Markdown learning path and the right pane shows per-level web and video references.
@@ -57,7 +57,7 @@ All keys are read from the environment (a `.env` file is loaded via `python-dote
 | `TAVILY_API_KEY` | Tavily web-search API key | tavily.com |
 | `SERPER_API_KEY` | Google Serper search API key | serper.dev |
 
-Model IDs, `max_tokens`, and temperature are hard-coded in `competancy-matrix.py`; there are no model-selection env vars.
+Model IDs, `max_tokens`, and temperature are hard-coded in `app.py`; there are no model-selection env vars.
 
 ## Documentation
 

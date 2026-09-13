@@ -1,19 +1,19 @@
 # Architecture
 
-Everything lives in one file, `competancy-matrix.py` (~450 lines): a custom lightweight agent framework, four agent implementations, and the Streamlit UI. This document maps what is actually there.
+Everything lives in one file, `app.py` (~450 lines): a custom lightweight agent framework, four agent implementations, and the Streamlit UI. This document maps what is actually there.
 
 ## Component map
 
 | Component | Location | Responsibility |
 |---|---|---|
-| `Agent` | `competancy-matrix.py` | Abstract base; one method, `process(query)` |
-| `Memory` | `competancy-matrix.py` | Append-only list of `{query, learning_path}` records |
-| `Team` | `competancy-matrix.py` | Orchestrator: generator → critic → per-level reference gathering |
-| `LearningPathAgent` | `competancy-matrix.py` | Calls GPT-4 Turbo and Claude 3.5 Sonnet with the same prompt; returns the longer response with provider name and latency |
-| `MetaReviewerAgent` | `competancy-matrix.py` | Same dual-provider loop, prompted to critique and improve the draft |
-| `WebSearchAgent` | `competancy-matrix.py` | Tavily search (5 results) + Serper POST (5 results), URL-deduplicated, capped at 10 |
-| `VideoSearchAgent` | `competancy-matrix.py` | `youtube_search` scrape (10 results), mapped to title/URL/views, capped at 5 |
-| `main()` | `competancy-matrix.py` | Streamlit page: Excel upload, three-step selection, generation button, two-column results |
+| `Agent` | `app.py` | Abstract base; one method, `process(query)` |
+| `Memory` | `app.py` | Append-only list of `{query, learning_path}` records |
+| `Team` | `app.py` | Orchestrator: generator → critic → per-level reference gathering |
+| `LearningPathAgent` | `app.py` | Calls GPT-4 Turbo and Claude 3.5 Sonnet with the same prompt; returns the longer response with provider name and latency |
+| `MetaReviewerAgent` | `app.py` | Same dual-provider loop, prompted to critique and improve the draft |
+| `WebSearchAgent` | `app.py` | Tavily search (5 results) + Serper POST (5 results), URL-deduplicated, capped at 10 |
+| `VideoSearchAgent` | `app.py` | `youtube_search` scrape (10 results), mapped to title/URL/views, capped at 5 |
+| `main()` | `app.py` | Streamlit page: Excel upload, three-step selection, generation button, two-column results |
 
 ## Data flow, end to end
 
