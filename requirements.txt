@@ -3,6 +3,7 @@ streamlit>=1.36
 openai>=1.30
 anthropic>=0.30
 tavily-python>=0.5
+youtube-search>=2.1
 requests>=2.31
 pandas>=2.0
 python-dotenv>=1.0
